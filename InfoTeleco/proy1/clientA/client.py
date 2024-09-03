@@ -154,8 +154,8 @@ if __name__ == "__main__":
     file_pub = Path('pubKeyUser.txt')
     #file_pub_other_user = Path('clientA/pubKeyUserB.txt')
     
-    if not (file_pri.is_file() and file_pub.is_file()):
-        client.generateKeys()
+    """ if not (file_pri.is_file() and file_pub.is_file()):
+        client.generateKeys() """
     client.readKeys()
     
     """ if not (file_pub_other_user.is_file()):
