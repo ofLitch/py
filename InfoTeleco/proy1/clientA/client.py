@@ -2,15 +2,12 @@ import socket
 import threading
 import rsa
 import pickle
-
-file_pri_c = open('pri_key_client.txt', 'rb')
-private_key_c = pickle.load(file_pri_c)
-file_pri_c.close()
+from pathlib import Path
 
 
 
 class UDPClient:
-    def __init__(self, server_ip, server_port):
+    def __init__(self, server_ip, server_port, local_ip, local_port):
         """
         Initialize the UDP Client with server IP and port.
 
@@ -20,7 +17,13 @@ class UDPClient:
         self.server_ip = server_ip
         self.server_port = server_port
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.client_socket.bind((local_ip, local_port))
         self.listening = False
+        
+        self.priKey = ""
+        self.pubKey = ""
+        self.pubKeyB = ""
+        
         print(f"UDP Client initialized for server at {self.server_ip}:{self.server_port}")
 
     def send_message(self, message):
@@ -31,7 +34,7 @@ class UDPClient:
         """
         try:
             #encrypt the message
-            enc_message = rsa.encrypt(message.encode(), private_key_c)
+            enc_message = self.encryptMsg(message)
             self.client_socket.sendto(enc_message, (self.server_ip, self.server_port))
             #self.client_socket.sendto(message.encode('utf-8'), (self.server_ip, self.server_port))
             print(f"Message sent to {self.server_ip}:{self.server_port}")
@@ -48,7 +51,8 @@ class UDPClient:
             print("Started listening for messages from the server...")
             while self.listening:
                 data, addr = self.client_socket.recvfrom(buffer_size)
-                print(f"\nMessage received from {addr}: {data.decode('utf-8')}")
+                msg = rsa.decrypt(data, self.pubKeyB).decode()
+                print(f"\nMessage received from {addr}: {msg.decode('utf-8')}")
         except Exception as e:
             print(f"Error receiving message: {e}")
 
@@ -77,14 +81,86 @@ class UDPClient:
         self.stop_listening()
         self.client_socket.close()
         print("UDP Client socket closed.")
+        
+    # Maniobrar Msg
+    def encryptMsg(self, msg):
+        return rsa.encrypt(msg.encode(), self.priKey)
+    
+    def decryptMsg(self, data):
+        return rsa.decrypt(data, self.pubKey).decode()
+    
+    # For keys
+    def generateKeys(self):
+        private_key, public_key = rsa.newkeys(512)
+        file_pri = open('clientA/privKeyUserA.txt', 'wb')
+        pickle.dump(private_key, file_pri)
+        file_pri.close()
+
+        file_pub = open('clientA/pubKeyUserA.txt', 'wb')
+        pickle.dump(public_key, file_pub)
+        file_pub.close()
+        
+    def readKeys(self):
+        file_pri_c = open('clientA/privKeyUserA.txt', 'rb')
+        self.priKey = pickle.load(file_pri_c)
+        file_pri_c.close()
+        
+        file_pub_c = open('clientA/pubKeyUserA.txt', 'rb')
+        self.pubKey = pickle.load(file_pub_c)
+        file_pub_c.close()
+        
+        file_pub_c_B = open('clientB/pubKeyUserB.txt', 'rb')
+        self.pubKeyB = pickle.load(file_pub_c_B)
+        file_pub_c_B.close()
+
+
+        
+    def requestKeyFromUser(self):
+        try:
+            msg = "¡publicKeyFromA!##" + self.pubKey
+            enc_msg = self.encryptMsg(msg)
+            self.client_socket.sendto(enc_msg, (self.server_ip, self.server_port))
+            
+            self.listening = True
+            response = ""
+            while self.listening:
+                data, addr = self.client_socket.recvfrom(buffer_size = 1024)
+                response = data.decode('utf-8')
+            self.listening = False
+            self.saveKeyFromUser(response)
+        except Exception as e:
+            print(f"Failed to send msg: {e}")
+            
+    def saveKeyFromUser(public_key):
+        file_pub = open('clientA/pubKeyUserB.txt', 'wb')
+        pickle.dump(public_key, file_pub)
+        file_pub.close()
+    
+    def readKeyFromUser():
+        file_pub = open('clientA/pubKeyUserB.txt', 'rb')
+        key = pickle.load(file_pub)
+        file_pub.close()
+        return key
 
 
 # Example usage:
 if __name__ == "__main__":
-    client = UDPClient("127.0.0.1", 12000)
-
+    
+    client = UDPClient("127.0.0.1", 12000, "127.0.0.1", 53591)
     # Start listening for messages from the server in a separate thread
     client.start_listening()
+    
+    file_pri = Path('privKeyUser.txt')
+    file_pub = Path('pubKeyUser.txt')
+    #file_pub_other_user = Path('clientA/pubKeyUserB.txt')
+    
+    if not (file_pri.is_file() and file_pub.is_file()):
+        client.generateKeys()
+    client.readKeys()
+    
+    """ if not (file_pub_other_user.is_file()):
+        client.requestKeyFromUser() """
+
 
     # Continuously send messages from user input
     try:

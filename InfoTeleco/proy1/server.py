@@ -1,11 +1,5 @@
 import socket
 import rsa
-import pickle
-
-file_pub_c = open('pub_key_client.txt', 'rb')
-pub_key_c = pickle.load(file_pub_c)
-file_pub_c.close()
-
 
 class UDPServer:
     def __init__(self, host, port):
@@ -32,7 +26,17 @@ class UDPServer:
             print("Waiting for messages from clients...")
             while True:
                 data, client_address = self.server_socket.recvfrom(buffer_size)
-                print(data)
+                
+                # UserA
+                if client_address[1] == 53591:
+                    print("NiceA")
+                    self.server_socket.sendto(data, ("127.0.0.1", 53592))
+                
+                # UserB
+                if client_address[1] == 53592:
+                    print("NiceB")
+                    self.server_socket.sendto(data, ("127.0.0.1", 53591))
+                """ 
                 dec_message = rsa.decrypt(data,pub_key_c).decode()
                 print(dec_message)
                 #message = data.decode('utf-8')
@@ -41,7 +45,7 @@ class UDPServer:
                 # Optional: Reply to the client
                 response_message = f"Server received your message: {dec_message}"
                 self.server_socket.sendto(response_message.encode('utf-8'), client_address)
-                print(f"Response sent to {client_address}")
+                print(f"Response sent to {client_address}") """
 
                 # For demonstration, break after the first message
                 #break
