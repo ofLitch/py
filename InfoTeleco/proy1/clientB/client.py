@@ -52,7 +52,7 @@ class UDPClient:
             while self.listening:
                 data, addr = self.client_socket.recvfrom(buffer_size)
                 msg = rsa.decrypt(data, self.pubKeyA).decode()
-                print(f"\nMessage received from {addr}: {msg.decode('utf-8')}")
+                print(f"\nMessage received from {addr}: {msg}")
         except Exception as e:
             print(f"Error receiving message: {e}")
 
@@ -115,7 +115,7 @@ class UDPClient:
 
 
         
-    def requestKeyFromUser(self):
+    """ def requestKeyFromUser(self):
         try:
             msg = "¡publicKeyFromA!##" + self.pubKey
             enc_msg = self.encryptMsg(msg)
@@ -129,7 +129,7 @@ class UDPClient:
             self.listening = False
             self.saveKeyFromUser(response)
         except Exception as e:
-            print(f"Failed to send msg: {e}")
+            print(f"Failed to send msg: {e}") """
             
     def saveKeyFromUser(public_key):
         file_pub = open('clientB/pubKeyUserA.txt', 'wb')
