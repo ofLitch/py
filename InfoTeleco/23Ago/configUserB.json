@@ -1,0 +1,6 @@
+{
+    "UserB":{
+        "name" : "UserB",
+        "contacts": "UserA"
+    }
+}

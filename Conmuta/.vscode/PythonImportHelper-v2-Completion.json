@@ -1,0 +1,136 @@
+[
+    {
+        "label": "soundfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "soundfile",
+        "description": "soundfile",
+        "detail": "soundfile",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "signal",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "readAudioFile",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def readAudioFile(path):\n    x, fs = sf.read(path)\n    return x, fs\n# A/D\ndef AtD(x, fs, bits = 16):\n    maxLevel = 2**(bits-1); # 32.768 máximo valor\n    maxX = np.max(np.abs(x))\n    normX = x/maxX\n    samplesDigital = np.round( normX * (maxLevel/maxX) )\n    return samplesDigital",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "AtD",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def AtD(x, fs, bits = 16):\n    maxLevel = 2**(bits-1); # 32.768 máximo valor\n    maxX = np.max(np.abs(x))\n    normX = x/maxX\n    samplesDigital = np.round( normX * (maxLevel/maxX) )\n    return samplesDigital\n# D/A\ndef DtA (x, fs, bits = 16):\n    maxLevel = 2**(bits-1)  # 32.768 máximo valor para 16 bits\n    normX = x / maxLevel  # Desescalar",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "Dt",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def DtA (x, fs, bits = 16):\n    maxLevel = 2**(bits-1)  # 32.768 máximo valor para 16 bits\n    normX = x / maxLevel  # Desescalar\n    reconstructedX = normX  # La señal ya normalizada\n    return reconstructedX\ndef DtB(x, bits=16):\n    binarySamples = []\n    for sample in x:\n        newB = [np.binary_repr(int(sample[0]), width=bits), np.binary_repr(int(sample[1]), width=bits)]\n        binarySamples.append(newB)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "DtB",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def DtB(x, bits=16):\n    binarySamples = []\n    for sample in x:\n        newB = [np.binary_repr(int(sample[0]), width=bits), np.binary_repr(int(sample[1]), width=bits)]\n        binarySamples.append(newB)\n    return binarySamples\ndef BtD(x):\n    digitalSamples = []\n    for binary in x:\n        digitalSamples = [[int(binary[0]) ], [int(binary[1]) ]]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "BtD",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def BtD(x):\n    digitalSamples = []\n    for binary in x:\n        digitalSamples = [[int(binary[0]) ], [int(binary[1]) ]]\n    return digitalSamples\nruta = 'LD.mp3'\nx, fs = readAudioFile(ruta)\n# A/d\nxDigital = AtD(x,fs)\n# DtB",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ruta",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "ruta = 'LD.mp3'\nx, fs = readAudioFile(ruta)\n# A/d\nxDigital = AtD(x,fs)\n# DtB\nxBinary = DtB(xDigital)\n# BtD\nxReconstructed = BtD(xBinary)\n# D/A\nxAnalog = DtA(xDigital, fs)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "xDigital",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "xDigital = AtD(x,fs)\n# DtB\nxBinary = DtB(xDigital)\n# BtD\nxReconstructed = BtD(xBinary)\n# D/A\nxAnalog = DtA(xDigital, fs)\nsf.write('LD_reconstructed.wav', xAnalog, fs)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "xBinary",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "xBinary = DtB(xDigital)\n# BtD\nxReconstructed = BtD(xBinary)\n# D/A\nxAnalog = DtA(xDigital, fs)\nsf.write('LD_reconstructed.wav', xAnalog, fs)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "xReconstructed",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "xReconstructed = BtD(xBinary)\n# D/A\nxAnalog = DtA(xDigital, fs)\nsf.write('LD_reconstructed.wav', xAnalog, fs)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "xAnalog",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "xAnalog = DtA(xDigital, fs)\nsf.write('LD_reconstructed.wav', xAnalog, fs)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "readAudioFile",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def readAudioFile(path):\n    samples, fs = sf.read(path)  # Leer archivo de audio\n    print(f\"Frecuencia de muestreo: {fs}\")\n    print(f\"Longitud de los datos: {len(samples)}\")\n    print(samples)\n# Ejecutar función con el archivo de audio\nreadAudioFile('LD.mp3')",
+        "detail": "test",
+        "documentation": {}
+    }
+]
