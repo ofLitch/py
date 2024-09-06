@@ -30,12 +30,14 @@ class UDPServer:
                 # UserA
                 if client_address[1] == 53591:
                     print("NiceA")
-                    self.server_socket.sendto(data, ("127.0.0.1", 53592))
+                    self.server_socket.sendto(data, ("192.168.240.28", 53592))
                 
                 # UserB
                 if client_address[1] == 53592:
                     print("NiceB")
-                    self.server_socket.sendto(data, ("127.0.0.1", 53591))
+                    self.server_socket.sendto(data, ("192.168.240.91", 53591))
+                    
+                    
                 """ 
                 dec_message = rsa.decrypt(data,pub_key_c).decode()
                 print(dec_message)
@@ -62,6 +64,6 @@ class UDPServer:
 
 # Example usage:
 if __name__ == "__main__":
-    server = UDPServer("127.0.0.1", 12000)
+    server = UDPServer("0.0.0.0", 12000)
     server.listen()
     server.close()

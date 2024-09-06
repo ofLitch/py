@@ -35,6 +35,7 @@ class UDPClient:
         try:
             #encrypt the message
             enc_message = self.encryptMsg(message)
+            msgEnd = "192.168.240.91##53591$$"+enc_message
             self.client_socket.sendto(enc_message, (self.server_ip, self.server_port))
             #self.client_socket.sendto(message.encode('utf-8'), (self.server_ip, self.server_port))
             print(f"Message sent to {self.server_ip}:{self.server_port}")
@@ -146,7 +147,7 @@ class UDPClient:
 # Example usage:
 if __name__ == "__main__":
     
-    client = UDPClient("127.0.0.1", 12000, "127.0.0.1", 53592)
+    client = UDPClient("192.168.240.28", 12000, "192.168.240.28", 53592)
     # Start listening for messages from the server in a separate thread
     client.start_listening()
     

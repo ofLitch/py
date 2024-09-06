@@ -1,0 +1,396 @@
+[
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "rsa",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "rsa",
+        "description": "rsa",
+        "detail": "rsa",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "UDPClient",
+        "kind": 6,
+        "importPath": "clientA.client",
+        "description": "clientA.client",
+        "peekOfCode": "class UDPClient:\n    def __init__(self, server_ip, server_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip\n        self.server_port = server_port\n        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)",
+        "detail": "clientA.client",
+        "documentation": {}
+    },
+    {
+        "label": "UDPClient",
+        "kind": 6,
+        "importPath": "clientB.client",
+        "description": "clientB.client",
+        "peekOfCode": "class UDPClient:\n    def __init__(self, server_ip, server_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip\n        self.server_port = server_port\n        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)",
+        "detail": "clientB.client",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": "Gabriela.venv.Scripts.activate_this",
+        "description": "Gabriela.venv.Scripts.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": "Gabriela.venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "UDPClient",
+        "kind": 6,
+        "importPath": "Gabriela.client2_enc",
+        "description": "Gabriela.client2_enc",
+        "peekOfCode": "class UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip\n        self.server_port = server_port\n        self.client2_ip = client2_ip",
+        "detail": "Gabriela.client2_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client2_enc",
+        "description": "Gabriela.client2_enc",
+        "peekOfCode": "file_pri_c2 = open('pri_key_client2.txt', 'rb')\nprivate_key_c2 = pickle.load(file_pri_c2)\nfile_pri_c2.close()\nfile_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.",
+        "detail": "Gabriela.client2_enc",
+        "documentation": {}
+    },
+    {
+        "label": "private_key_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client2_enc",
+        "description": "Gabriela.client2_enc",
+        "peekOfCode": "private_key_c2 = pickle.load(file_pri_c2)\nfile_pri_c2.close()\nfile_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.",
+        "detail": "Gabriela.client2_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub_c",
+        "kind": 5,
+        "importPath": "Gabriela.client2_enc",
+        "description": "Gabriela.client2_enc",
+        "peekOfCode": "file_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"",
+        "detail": "Gabriela.client2_enc",
+        "documentation": {}
+    },
+    {
+        "label": "public_key_c",
+        "kind": 5,
+        "importPath": "Gabriela.client2_enc",
+        "description": "Gabriela.client2_enc",
+        "peekOfCode": "public_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip",
+        "detail": "Gabriela.client2_enc",
+        "documentation": {}
+    },
+    {
+        "label": "UDPClient",
+        "kind": 6,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "class UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip,client2_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip\n        self.server_port = server_port\n        self.client2_ip = client2_ip",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "file_pri_c2 = open('pri_key_client2.txt', 'rb')\nprivate_key_c2 = pickle.load(file_pri_c2)\nfile_pri_c2.close()\nfile_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\n#Data receiver\ndata_receiver = {\n    \"ip_address\":\"127.0.0.0\",\n    \"port\": \"12000\"",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "private_key_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "private_key_c2 = pickle.load(file_pri_c2)\nfile_pri_c2.close()\nfile_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\n#Data receiver\ndata_receiver = {\n    \"ip_address\":\"127.0.0.0\",\n    \"port\": \"12000\"\n}",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub_c",
+        "kind": 5,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "file_pub_c = open('pub_key_client.txt', 'rb')\npublic_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\n#Data receiver\ndata_receiver = {\n    \"ip_address\":\"127.0.0.0\",\n    \"port\": \"12000\"\n}\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip,client2_port):",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "public_key_c",
+        "kind": 5,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "public_key_c = pickle.load(file_pub_c)\nfile_pub_c.close()\n#Data receiver\ndata_receiver = {\n    \"ip_address\":\"127.0.0.0\",\n    \"port\": \"12000\"\n}\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip,client2_port):\n        \"\"\"",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "data_receiver",
+        "kind": 5,
+        "importPath": "Gabriela.client3",
+        "description": "Gabriela.client3",
+        "peekOfCode": "data_receiver = {\n    \"ip_address\":\"127.0.0.0\",\n    \"port\": \"12000\"\n}\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip,client2_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.",
+        "detail": "Gabriela.client3",
+        "documentation": {}
+    },
+    {
+        "label": "UDPClient",
+        "kind": 6,
+        "importPath": "Gabriela.client_enc",
+        "description": "Gabriela.client_enc",
+        "peekOfCode": "class UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip\n        self.server_port = server_port\n        self.client2_ip = client2_ip",
+        "detail": "Gabriela.client_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri_c",
+        "kind": 5,
+        "importPath": "Gabriela.client_enc",
+        "description": "Gabriela.client_enc",
+        "peekOfCode": "file_pri_c = open('pri_key_client.txt', 'rb')\nprivate_key_c = pickle.load(file_pri_c)\nfile_pri_c.close()\nfile_pub_c2 = open('pub_key_client2.txt', 'rb')\npublic_key_c2 = pickle.load(file_pub_c2)\nfile_pub_c2.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.",
+        "detail": "Gabriela.client_enc",
+        "documentation": {}
+    },
+    {
+        "label": "private_key_c",
+        "kind": 5,
+        "importPath": "Gabriela.client_enc",
+        "description": "Gabriela.client_enc",
+        "peekOfCode": "private_key_c = pickle.load(file_pri_c)\nfile_pri_c.close()\nfile_pub_c2 = open('pub_key_client2.txt', 'rb')\npublic_key_c2 = pickle.load(file_pub_c2)\nfile_pub_c2.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.",
+        "detail": "Gabriela.client_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client_enc",
+        "description": "Gabriela.client_enc",
+        "peekOfCode": "file_pub_c2 = open('pub_key_client2.txt', 'rb')\npublic_key_c2 = pickle.load(file_pub_c2)\nfile_pub_c2.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"",
+        "detail": "Gabriela.client_enc",
+        "documentation": {}
+    },
+    {
+        "label": "public_key_c2",
+        "kind": 5,
+        "importPath": "Gabriela.client_enc",
+        "description": "Gabriela.client_enc",
+        "peekOfCode": "public_key_c2 = pickle.load(file_pub_c2)\nfile_pub_c2.close()\nclass UDPClient:\n    def __init__(self, server_ip, server_port, client2_ip, client2_port, local_ip, local_port):\n        \"\"\"\n        Initialize the UDP Client with server IP and port.\n        :param server_ip: The IP address of the server.\n        :param server_port: The port number of the server.\n        \"\"\"\n        self.server_ip = server_ip",
+        "detail": "Gabriela.client_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri",
+        "kind": 5,
+        "importPath": "Gabriela.main",
+        "description": "Gabriela.main",
+        "peekOfCode": "file_pri = open('pri_key_client.txt', 'wb')\npickle.dump(private_key, file_pri)\nfile_pri.close()\nfile_pub = open('pub_key_client.txt', 'wb')\npickle.dump(public_key, file_pub)\nfile_pub.close()\nprivate_key2, public_key2 = rsa.newkeys(512)\nfile_pri2 = open('pri_key_client2.txt', 'wb')\npickle.dump(private_key2, file_pri2)\nfile_pri2.close()",
+        "detail": "Gabriela.main",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub",
+        "kind": 5,
+        "importPath": "Gabriela.main",
+        "description": "Gabriela.main",
+        "peekOfCode": "file_pub = open('pub_key_client.txt', 'wb')\npickle.dump(public_key, file_pub)\nfile_pub.close()\nprivate_key2, public_key2 = rsa.newkeys(512)\nfile_pri2 = open('pri_key_client2.txt', 'wb')\npickle.dump(private_key2, file_pri2)\nfile_pri2.close()\nfile_pub2 = open('pub_key_client2.txt', 'wb')\npickle.dump(public_key2, file_pub2)\nfile_pub2.close()",
+        "detail": "Gabriela.main",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri2",
+        "kind": 5,
+        "importPath": "Gabriela.main",
+        "description": "Gabriela.main",
+        "peekOfCode": "file_pri2 = open('pri_key_client2.txt', 'wb')\npickle.dump(private_key2, file_pri2)\nfile_pri2.close()\nfile_pub2 = open('pub_key_client2.txt', 'wb')\npickle.dump(public_key2, file_pub2)\nfile_pub2.close()",
+        "detail": "Gabriela.main",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub2",
+        "kind": 5,
+        "importPath": "Gabriela.main",
+        "description": "Gabriela.main",
+        "peekOfCode": "file_pub2 = open('pub_key_client2.txt', 'wb')\npickle.dump(public_key2, file_pub2)\nfile_pub2.close()",
+        "detail": "Gabriela.main",
+        "documentation": {}
+    },
+    {
+        "label": "UDPServer",
+        "kind": 6,
+        "importPath": "Gabriela.server_enc",
+        "description": "Gabriela.server_enc",
+        "peekOfCode": "class UDPServer:\n    def __init__(self, host, port):\n        \"\"\"\n        Initialize the UDP Server with host and port.\n        :param host: The IP address or hostname to bind the server to.\n        :param port: The port number to bind the server to.\n        \"\"\"\n        self.host = host\n        self.port = port\n        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)",
+        "detail": "Gabriela.server_enc",
+        "documentation": {}
+    },
+    {
+        "label": "file_pri",
+        "kind": 5,
+        "importPath": "generator",
+        "description": "generator",
+        "peekOfCode": "file_pri = open('pri_key_client.txt', 'wb')\npickle.dump(private_key, file_pri)\nfile_pri.close()\nfile_pub = open('pub_key_client.txt', 'wb')\npickle.dump(public_key, file_pub)\nfile_pub.close()",
+        "detail": "generator",
+        "documentation": {}
+    },
+    {
+        "label": "file_pub",
+        "kind": 5,
+        "importPath": "generator",
+        "description": "generator",
+        "peekOfCode": "file_pub = open('pub_key_client.txt', 'wb')\npickle.dump(public_key, file_pub)\nfile_pub.close()",
+        "detail": "generator",
+        "documentation": {}
+    },
+    {
+        "label": "UDPServer",
+        "kind": 6,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "class UDPServer:\n    def __init__(self, host, port):\n        \"\"\"\n        Initialize the UDP Server with host and port.\n        :param host: The IP address or hostname to bind the server to.\n        :param port: The port number to bind the server to.\n        \"\"\"\n        self.host = host\n        self.port = port\n        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)",
+        "detail": "server",
+        "documentation": {}
+    }
+]
